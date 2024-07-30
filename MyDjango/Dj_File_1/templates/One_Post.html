@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+
+{%  load custom_filters %}
+
+{% block title %}
+Post:
+
+{% endblock title %}
+
+
+{% block content %}
+
+{% if onePost %}
+        <table>
+            <tr>
+                <td> Title </td>
+                <td> Text </td>
+                <td> Date </td>
+            </tr>
+            <tr>
+                <td> {{ onePost.title|censor }} </td>
+                <td> {{ onePost.text_article|censor }} </td>
+                <td> {{ onePost.time_in|date:'d M Y' }} </td>
+            </tr>
+
+        </table>
+
+{% else %}
+Post does not exist
+
+
+{% endif %}
+
+
+
+{% endblock content %}

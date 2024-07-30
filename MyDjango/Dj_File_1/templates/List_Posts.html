@@ -1,0 +1,38 @@
+{% extends 'flatpages/default.html'  %}
+
+{% load custom_filters %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+
+{% if listPosts %}
+
+    <table>
+
+        <tr>
+            <td> Title </td>
+            <td> Date </td>
+            <td> Text </td>
+        </tr>
+
+
+        {% for i in listPosts %}
+        <tr>
+            <td> {{ i.title|censor }} </td>
+            <td> {{ i.time_in }}</td>
+            <td> {{ i.text_article|truncatechars:20|censor }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+{% else %}
+There are not posts
+
+{% endif %}
+
+{% endblock content %}
